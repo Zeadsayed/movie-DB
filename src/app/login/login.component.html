@@ -1,0 +1,76 @@
+<!-- 
+<div class="container">
+    <div class="row w-75 mx-auto">
+        
+        <div>
+            <form [formGroup]="loginForm" (ngSubmit)="OnLogin(loginForm)">
+                {{loginForm.get('first_name')?.errors?.['required'] |json}}
+
+                <div>
+                    <label for="userName" class="form-label">User Name [use this user: kminchelle]</label>
+                    <input class="form-control" formControlName="userName" type="text" name="" id="">
+                    
+                    <div *ngIf="loginForm.get('userName')?.errors && loginForm.get('userName')?.touched" class="text-danger">
+                        <p *ngIf="loginForm.get('userName')?.errors?.['required']">Email is Required</p>
+                        <p *ngIf="loginForm.get('userName')?.errors?.['userName']">Email is Invalid</p>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password">password <span>[use this paswword: 0lelplR]</span> </label>
+                    <input class="form-control" formControlName="password" type="" name="" id="">
+
+                    <h3 *ngIf="!show" (click)="show=!show">Show Password</h3>
+                    <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="text-danger">
+                        <p *ngIf="loginForm.get('password')?.errors?.['required']">Password is Required</p>
+                        <p *ngIf="loginForm.get('password')?.errors?.['minlength']">Password is MinLenght 4</p>
+                        <p *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password is MaxLenght 10</p>
+                        <p *ngIf="loginForm.get('password')?.errors?.['pattern']">password is Invalid</p>
+                    </div>
+                </div>
+
+                <button class="btn btn-info my-2" type="submit">Login</button>
+
+            </form>
+
+            <div *ngIf="err" class="text-danger my-2">{{err}}</div>
+
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="container">
+    <div class="row w-50 mx-auto">
+        <div class="head bg-info text-center mb-5">
+            <h1>Login Form</h1>
+        </div>
+        <div *ngIf="err" class="alert alert-danger my-3">{{err}}</div>
+        <form #loginform="ngForm" (ngSubmit)="OnLogin(loginform)">
+            <div class="my-5 px-5">
+                <label for="userName" class="form-label">Username : kminchelle</label>
+                <input ngModel #userName="ngModel" class="form-control" type="username" name="username" required
+                    minlength="8" maxlength="16">
+                <p class="text text-danger my-1" *ngIf="userName.errors?.['required'] && userName.touched">* username is
+                    required
+                </p>
+                <p class="text text-danger my-1" *ngIf="userName.errors?.['minlength'] && userName.touched">*
+                    Username must be between 8 - 16 letters</p>
+            </div>
+            <div class="my-5 px-5">
+                <label for="password" class="form-label">Password : 0lelplR</label>
+                <input ngModel #password="ngModel" class="form-control" type="password" name="password" required
+                    password minlength="6" maxlength="15">
+                <p class="text text-danger my-1" *ngIf="password.errors?.['required'] && password.touched">*
+                    Password is
+                    required</p>
+                <p class="text text-danger my-1" *ngIf="password.errors?.['minlength, maxlength'] && password.touched">*
+                    Password must be between 6 - 15 characters</p>
+            </div>
+            <div class="text-center mb-5">
+                <button class="btn btn-outline-info" [disabled]="loginform.invalid" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
