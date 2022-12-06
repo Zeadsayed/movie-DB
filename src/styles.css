@@ -13,3 +13,15 @@ body{
 .bg-color{
    background-color: #131722;
 }
+
+.vote{
+   background-color: #24baef;
+   color: #fff;
+   font-weight: 900;
+   padding: 5px;
+}
+
+.brdr{
+   background-color: #a8a8a83d;
+   height: 1px;
+}

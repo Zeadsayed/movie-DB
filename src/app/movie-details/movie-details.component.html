@@ -1,0 +1,22 @@
+<div class="row">
+
+  <div class="col-md-9 mx-auto border border-secondary">
+    <div class="row">
+        <div class="col-md-6">
+            <img [src]="imgPrefix+movieDetails.poster_path" class="w-100" alt="">
+        </div>
+    
+        <div class="col-md-6 d-flex align-items-center">
+           <div>
+            <h2>Name : {{movieDetails.title}} {{movieDetails.name}}</h2>
+            <hr class="border border-info ">
+            <p>{{movieDetails.overview}}</p>
+            <hr class="border border-info ">
+            <h2 class="text-danger">{{movieDetails.vote_average | number:'1.1-1'}}</h2>
+            <hr class="border border-info ">
+           </div>
+        </div>
+    </div>
+  </div>
+
+</div>

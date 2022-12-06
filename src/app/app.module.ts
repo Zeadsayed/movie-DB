@@ -18,6 +18,7 @@ import { PeopleComponent } from './people/people.component';
 import { NetworksComponent } from './networks/networks.component';
 import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     TvShowsComponent,
     PeopleComponent,
     NetworksComponent,
+    MovieDetailsComponent,
 
 
   ],
