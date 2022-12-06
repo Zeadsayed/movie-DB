@@ -1,1 +1,33 @@
-<p>people works!</p>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12 text-center">
+         
+                <div class="brdr w-25 my-4 mx-auto"></div>
+                <h2>
+                    Tranding <br>
+                    people <br>
+                    To watch now
+                </h2>
+                <p>Tranding people To Watch Now</p>
+                <div class="brdr my-4 w-100"></div>
+         
+        </div>
+
+        <div *ngFor="let person of trendperson" class="item col-md-2 col-sm-4 position-relative rounded rounded-3">
+
+            <div class="movie border border-dark my-3 pb-5 ">
+                <a [routerLink]="['/movieDetails',person.id]" class="list-unstyled text-decoration-none text-white">
+                    <img [src]="imgPrefix+person.profile_path " class="w-100" alt="">
+                    <h3 class="h6 my-2 mx-2">{{person.title}} {{person.name}}</h3>
+                    <p class="my-2 mx-2">{{person.known_for_department}}</p>
+                    <div class="vote position-absolute top-0 end-0  rounded rounded-3">
+                        {{person.popularity | number:'1.1-1'}}
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
+
 MoviesService
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ MoviesService
 
 
 export class HomeComponent implements OnInit {
-
+ 
   trendMovie:any[]=[];
   trendPeople:any[]=[];
   trendTv:any[]=[];

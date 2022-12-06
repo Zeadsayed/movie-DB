@@ -1,0 +1,15 @@
+
+<header class="vh-100 d-flex align-items-end mb-4">
+    <div class="container">
+        <owl-carousel-o [options]="customOptions" class="">
+
+            <ng-container *ngFor="let movie of headertrendmovies">
+            <ng-template carouselSlide >
+                <img [src]="imgPrefix+movie.poster_path" [alt]="movie.akt" [title]="movie.title">
+            </ng-template>
+            </ng-container>
+        
+        </owl-carousel-o>
+    </div>
+  
+</header>

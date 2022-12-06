@@ -1,15 +1,35 @@
 footer{
-    max-width: 100%;
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 0;
-    background-image: radial-gradient(at 30% top, #031d33 0%, rgba(var(--tmdbDarkBlue), 1) 70%);
-    background-position: center top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: space-between;
-    justify-content: center;
+    border-top: 2px solid #24baef;
+}
+a{
+    transition: all 1s;
+    text-decoration: none;
+}
+i{
+    transition: all 1s;
+}
+a:hover{
+    color: #24baef !important;
+    transition: all 1s;
+}
+i:hover{
+    color: #24baef !important;
+}
+
+.social h3,h6{
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.social ul li a{
+    line-height: 1.6em;
+    max-width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
 }

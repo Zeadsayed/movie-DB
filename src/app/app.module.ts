@@ -19,6 +19,9 @@ import { NetworksComponent } from './networks/networks.component';
 import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     PeopleComponent,
     NetworksComponent,
     MovieDetailsComponent,
-
+    HeaderComponent,
 
   ],
   imports: [
@@ -45,7 +48,9 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    CarouselModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]

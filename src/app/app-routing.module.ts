@@ -23,6 +23,7 @@ const routes: Routes = [
   {path:'movieDetails/:id',canActivate:[AuthGuard],component:MovieDetailsComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
+  {path:'settings',loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
   {path:'**',component:NotfoundComponent},
 ];
 
