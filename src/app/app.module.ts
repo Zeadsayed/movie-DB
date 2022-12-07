@@ -15,7 +15,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { PeopleComponent } from './people/people.component';
-import { NetworksComponent } from './networks/networks.component';
 import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -38,9 +37,9 @@ import { HeaderComponent } from './header/header.component';
     NotfoundComponent,
     TvShowsComponent,
     PeopleComponent,
-    NetworksComponent,
     MovieDetailsComponent,
     HeaderComponent,
+
 
   ],
   imports: [

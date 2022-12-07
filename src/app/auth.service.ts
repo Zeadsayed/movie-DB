@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(private _HttpClient:HttpClient, private _Router:Router) {
 
-    if (localStorage.getItem('token') !=null) {
+    if (localStorage.getItem('accessToken') !=null) {
       this.saveUser();
     }
 
@@ -25,7 +25,7 @@ export class AuthService {
 
   saveUser(){
 
-    let decodedUser=JSON.stringify(localStorage.getItem('token'));
+    let decodedUser=JSON.stringify(localStorage.getItem('accessToken'));
 
     // this.userData= jwtDecode(decodedUser);
     
@@ -33,19 +33,20 @@ export class AuthService {
 
     // console.log(this.userData.getValue());
     
-  }
+  
+}
 
   register(formData:any):Observable<any>{
-    return this._HttpClient.post(`https://route-egypt-api.herokuapp.com/signup`,formData);
+    return this._HttpClient.post(`https://route-movies-api.vercel.app/signup`,formData);
   }
 
   login(formData:any):Observable<any>{
-    return this._HttpClient.post('https://dummyjson.com/auth/login',formData);
+    return this._HttpClient.post('https://route-movies-api.vercel.app/signin',formData);
   }
 
   logOut(){
 
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
 
     this.userData.next(null);
 

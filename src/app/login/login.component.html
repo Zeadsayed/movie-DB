@@ -6,43 +6,34 @@
         <!-- <div class="head bg-info text-center mb-5">
             <h1>Login Form</h1>
         </div> -->
+        <h2 class="border border-info py-2 text-center w-50 mx-auto ">login Form</h2>
 
-        <div *ngIf="err" class="alert alert-danger my-3">{{err}}</div>
+        <div *ngIf="err" class="alert alert-danger my-2">{{err}}</div>
 
-        <form #loginform="ngForm" (ngSubmit)="OnLogin(loginform)">
+        <form [formGroup]="loginForm" (ngSubmit)="OnLogin(loginForm)">
 
             <div class="my-5 px-5">
-                <label for="userName" class="form-label">Username : kminchelle</label>
-
-                <input ngModel #userName="ngModel" class="form-control" type="username" name="username" required
-                    minlength="8" maxlength="16">
-
-                <p class="text text-danger my-1" *ngIf="userName.errors?.['required'] && userName.touched">
-                    * username is required
-                </p>
-
-                <p class="text text-danger my-1" *ngIf="userName.errors?.['minlength'] && userName.touched">*
-                    Username must be between 8 - 16 letters
-                </p>
+                <label class="my-1" for="email">Email : ze1@gmail.com</label>
+                <input class="form-control" formControlName="email" type="text" name="" id="">
+                <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="text-danger">
+                    <p *ngIf="loginForm.get('email')?.errors?.['required']">Email is Required</p>
+                    <p *ngIf="loginForm.get('email')?.errors?.['email']">Email is Invalid</p>
+                </div>
             </div>
 
             <div class="my-5 px-5">
-                <label for="password" class="form-label">Password : 0lelplR</label>
+                <label class="my-1" for="password">password</label>
+                <input class="form-control" formControlName="password" type="password" name="" id="">
 
-                <input ngModel #password="ngModel" class="form-control" type="password" name="password" required
-                    password minlength="6" maxlength="15">
-
-                <p class="text text-danger my-1" *ngIf="password.errors?.['required'] && password.touched">*
-                    Password is required
-                </p>
-
-                <p class="text text-danger my-1" *ngIf="password.errors?.['minlength, maxlength'] && password.touched">*
-                    Password must be between 6 - 15 characters
-                </p>
+                <!-- <h3 *ngIf="!show" (click)="show=!show">Show Password</h3> -->
+                <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="text-danger">
+                    <p *ngIf="loginForm.get('password')?.errors?.['required']">Password is Required</p>
+                    <p *ngIf="loginForm.get('password')?.errors?.['pattern']">password is Invalid</p>
+                </div>
             </div>
 
             <div class="text-center mb-5">
-                <button class="btn btn-outline-info text-white" [disabled]="loginform.invalid" type="submit">Login</button>
+                <button class="btn btn-outline-info text-white" [disabled]="loginForm.invalid" type="submit">Login</button>
             </div>
         </form>
 

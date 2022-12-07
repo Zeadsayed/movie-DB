@@ -16,4 +16,9 @@ export class MoviesService {
   getMoviesDetails(id:string):Observable<any>{
     return this._HttpClient.get(`https://api.themoviedb.org/3/movie/${id}?api_key=0a46f789c05ab1c8460d239b811d296a&language=en-US`)
   }
+
+  getTvDetails(id:string):Observable<any>{
+    return this._HttpClient.get(`https://api.themoviedb.org/3/tv/${id}?api_key=0a46f789c05ab1c8460d239b811d296a`)
+  }
+  
 }

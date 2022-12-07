@@ -17,7 +17,7 @@
         <div *ngFor="let tv of trendtv" class="item col-md-2 col-sm-4 position-relative rounded rounded-3">
 
             <div class="movie border border-dark my-3 pb-5 ">
-                <a [routerLink]="['/movieDetails',tv.id]" class="list-unstyled text-decoration-none text-white">
+                <a [routerLink]="['/tvDetails',tv.id]" class="list-unstyled text-decoration-none text-white">
                     <img [src]="imgPrefix+tv.poster_path" class="w-100" alt="">
                     <h3 class="h6 my-2 mx-2">{{tv.title}} {{tv.name}}</h3>
                     <p class="my-2 mx-2">{{tv.release_date}}</p>

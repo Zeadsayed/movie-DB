@@ -22,7 +22,8 @@ export class MovieDetailsComponent implements OnInit {
 
     this._MoviesService.getMoviesDetails(this.id).subscribe((res)=>{
       this.movieDetails=res;
-    })  
+    }) 
+     
   }
-
+  
 }
