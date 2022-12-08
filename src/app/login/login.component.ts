@@ -21,23 +21,19 @@ export class LoginComponent {
   constructor(private _AuthService:AuthService , private _Router:Router){}
 
   OnLogin(formData:FormGroup){
-    console.log(formData.value);
-    
-    this._AuthService.login(formData.value).subscribe((res)=>{
-      console.log(res);
-      if(res.message=='success'){
-        this._Router.navigate(['home'])
-        // localStorage.setItem('accessToken',res.token)
+    this._AuthService.login(formData.value).subscribe({
+      next:(res) =>{
+        if(res){
+          this._Router.navigate(['home']);
+          localStorage.setItem('accessToken',res.token);
+          this._AuthService.saveUser();
+        } else {
+          this.err = res.message;
+          alert('login fail !, please try again');
+        }
+      }, error:(err) =>{
+        console.log(err.errors.message);
       }
-      else{
-        this.err=res.message
-      }
-      
-    },(err)=>{
-
-    },()=>{
-
     });
-
   }
 }

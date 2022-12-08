@@ -25,3 +25,7 @@ body{
    background-color: #a8a8a83d;
    height: 1px;
 }
+
+.nav-li{
+   cursor: pointer;
+}

@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { PeopleComponent } from './people/people.component';
 import { RegisterComponent } from './register/register.component';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
+import { TvDetailsComponent } from './tv-details/tv-details.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'tvShows',canActivate:[AuthGuard],component:TvShowsComponent},
   {path:'people',canActivate:[AuthGuard],component:PeopleComponent},
   {path:'movieDetails/:id',canActivate:[AuthGuard],component:MovieDetailsComponent},
+  {path:'tvDetails/:id',canActivate:[AuthGuard],component:TvDetailsComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'settings',loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},

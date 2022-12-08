@@ -21,7 +21,7 @@
                 <a [routerLink]="['/movieDetails',movie.id]" class="list-unstyled text-decoration-none text-white">
                     <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
                     <h3 class="h6 text-center my-1">{{movie.title}} {{movie.name}}</h3>
-
+                    <!-- <h2 class="">release date : {{movie.release_date }}</h2> -->
                     <div class="vote position-absolute top-0 end-0  ">
                         {{movie.vote_average | number:'1.1-1'}}
                     </div>
@@ -48,12 +48,14 @@
         <div *ngFor="let movie of trendTv" class="col-md-2 col-sm-4 position-relative">
 
             <div class="movie">
-                <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
-                <h3 class="h6 text-center">{{movie.title}} {{movie.name}}</h3>
+                <a [routerLink]="['/tvDetails',movie.id]" class="list-unstyled text-decoration-none text-white">
+                    <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
+                    <h3 class="h6 text-center">{{movie.title}} {{movie.name}}</h3>
 
-                <div class="vote position-absolute top-0 end-0">
-                    {{movie.vote_average | number:'1.1-1'}}
-                </div>
+                    <div class="vote position-absolute top-0 end-0">
+                        {{movie.vote_average | number:'1.1-1'}}
+                    </div>
+                </a>
             </div>
 
         </div>

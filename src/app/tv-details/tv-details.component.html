@@ -1,0 +1,29 @@
+<div class="tv-detailsrow  m-4">
+
+    <div class="col-lg-9 col-md-12 col-sm-12 mx-auto border border-secondary">
+      <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6">
+              <img [src]="imgPrefix+tvDetails.poster_path" class="w-100" alt="">
+          </div>
+      
+          <div class="col-md-7 col-sm-6 mt-3">
+            <h2>{{tvDetails.title}} {{tvDetails.name}} </h2>
+            <p class="tagline">{{tvDetails.tagline}}</p>
+            <hr class="border border-info ">
+            <h4 class=""><span class="text-info">Vote : </span><i class='fas fa-star text-warning fa-xs'></i> {{tvDetails.vote_average | number:'1.1-1'}}</h4>
+            <hr class="border border-info ">
+            <h4 class=""><span class="text-info">Vote count :</span> {{tvDetails.vote_count }}</h4>
+            <hr class="border border-info ">
+            <h4 class=""><span class="text-info">Popularity :</span>{{tvDetails.popularity }}</h4>
+            <hr class="border border-info ">
+            <h4 class=""><span class="text-info">Release Date :</span> {{tvDetails.release_date }} {{tvDetails.first_air_date}}</h4>
+            <hr class="border border-info ">
+            <h4><span class="text-info">Overview :</span> </h4>
+            <p>{{tvDetails.overview}}</p>
+          
+          </div>
+
+      </div>
+    </div>
+  
+  </div>

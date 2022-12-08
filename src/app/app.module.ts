@@ -21,6 +21,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './header/header.component';
+import { TvDetailsComponent } from './tv-details/tv-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { HeaderComponent } from './header/header.component';
     PeopleComponent,
     MovieDetailsComponent,
     HeaderComponent,
-
+    TvDetailsComponent
 
   ],
   imports: [
