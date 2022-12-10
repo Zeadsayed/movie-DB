@@ -21,15 +21,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this._MoviesService.getMovies("movie").subscribe((res)=>{
-      this.trendMovie=res.results.splice(0,10);
+      this.trendMovie=res.results.splice(0,12);
     });
 
     this._MoviesService.getMovies("tv").subscribe((res)=>{
-      this.trendTv=res.results.splice(0,10);
+      this.trendTv=res.results.splice(0,12);
     });
 
     this._MoviesService.getMovies("person").subscribe((res)=>{
-      this.trendPeople=res.results.splice(0,10);
+      this.trendPeople=res.results.splice(0,12);
     });
   }
   

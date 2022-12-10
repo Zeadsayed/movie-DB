@@ -1,7 +1,18 @@
+
+.navbar{
+    border-bottom: 1.5px solid #a8a8a83d;
+}
 .navbar-brand{
     color: #fff;
-    font-size: 30px; 
+    font-size: 40px; 
     font-weight: 700;
+    transition: all 1s;
+
+}
+.navbar-brand:hover{
+    color: #24baef !important;
+    transition: all 1s;
+
 }
 nav .navbar {
     background-color: #131722 ;
@@ -9,4 +20,57 @@ nav .navbar {
 
 .nav-item a{
     color: #949cb0;
+    transition: all 1s;
+    font-size: 18px;
 }
+
+.nav-item button{
+    margin-left: 15px;
+    font-weight: 700;
+    transition: all 1s;
+}
+
+.nav-item button:hover{
+    color: #131722 !important;
+    font-weight: 700;
+    transition: all 1s;
+}
+
+/* .nav-item .btn2:hover{
+    background-color: transparent;
+    color: #fff !important;
+} */
+
+.nav-item a:hover{
+    color: #ffffff;
+    transition: all 1s;
+}
+
+.nav-link .icon{
+    transition: all 1s;
+}
+
+.nav-link .icon:hover {
+    color: #24baef !important;
+    transition: all 1s;
+}
+
+@media (max-width: 991.98px)  {
+    .d-flex {
+        align-items: center;
+        justify-items: center;
+       justify-content: center;
+    }
+    .nav-link .icon{
+      display: none;
+    } 
+    .nav-item .btn1{
+        margin-left: -50px;
+    } 
+
+    .nav-item .btn2{
+        margin-left: -50px;
+    } 
+ }
+
+ 

@@ -3,7 +3,7 @@
 
         <div class="col-md-12 text-center">
          
-                <div class="brdr w-25 my-4 mx-auto"></div>
+                <div class=" w-25 my-4 mx-auto"></div>
                 <h2>
                     Tranding <br>
                     Movies <br>
@@ -14,30 +14,32 @@
          
         </div>
 
-        <div *ngFor="let movie of trendMovie" class="item col-md-2 col-sm-4 position-relative rounded rounded-3">
+        <div [routerLink]="['/movieDetails',movie.id]" *ngFor="let movie of trendMovie" class="movie col-lg-3 my-2 col-md-4 col-sm-6 item position-relative">
+            
+            <img [src]="imgPrefix+movie.poster_path" class="w-100 " alt="">
 
-            <div class="movie border border-dark my-3 pb-5 ">
-                <a [routerLink]="['/movieDetails',movie.id]" class="list-unstyled text-decoration-none text-white">
-                    <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
-                    <h3 class="h6 my-2 mx-2">{{movie.title}} {{movie.name}}</h3>
-                    <p class="my-2 mx-2">{{movie.release_date}}</p>
-                    <div class="vote position-absolute top-0 end-0  rounded rounded-3">
-                        <i class='bx bxs-star'></i> {{movie.vote_average | number:'1.1-1'}}
-                    </div>
-                </a>
+            <h3 class="h6  my-3">{{movie.title}} {{movie.name}}</h3>
+            
+            <h3 class="date h6 my-2 text-white"><span class="">Release Date : </span> {{movie.release_date }}</h3>    
+            
+        
+            <div class="vote position-absolute top-0 end-0  rounded rounded-2">
+                <i class='fas fa-star text-warning fa-xs'></i> {{movie.vote_average | number:'1.1-1'}}
             </div>
-
+           
         </div>
 
-        <nav >
+        <nav class="mt-3">
             <ul class=" d-flex align-items-center justify-content-center list-unstyled">
-                <li (click)="getMoviesPage(1)" class="nav-li border border-info rounded rounded-3 mx-1 p-2">1</li>
-                <li (click)="getMoviesPage(2)" class="nav-li border border-info rounded rounded-3 mx-1 p-2">2</li>
-                <li (click)="getMoviesPage(3)" class="nav-li border border-info rounded rounded-3 mx-1 p-2">3</li>
-                <li (click)="getMoviesPage(4)" class="nav-li border border-info rounded rounded-3 mx-1 p-2">4</li>
-                <li (click)="getMoviesPage(5)" class="nav-li border border-info rounded rounded-3 mx-1 p-2">5</li>
+                <li (click)="getMoviesPage(1)" class="nav-li  border border-info rounded rounded-3 mx-1 p-2">1</li>
+                <li (click)="getMoviesPage(2)" class="nav-li  border border-info rounded rounded-3 mx-1 p-2">2</li>
+                <li (click)="getMoviesPage(3)" class="nav-li  border border-info rounded rounded-3 mx-1 p-2">3</li>
+                <li (click)="getMoviesPage(4)" class="nav-li  border border-info rounded rounded-3 mx-1 p-2">4</li>
+                <li (click)="getMoviesPage(5)" class="nav-li  border border-info rounded rounded-3 mx-1 p-2">5</li>
             </ul>
         </nav>
+
+      
 
     </div>
 </div>

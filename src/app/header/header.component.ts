@@ -29,7 +29,7 @@ export class HeaderComponent {
         items: 3
       },
       940: {
-        items: 8
+        items: 6
       }
     },
     nav: true

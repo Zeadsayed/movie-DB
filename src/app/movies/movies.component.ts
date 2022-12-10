@@ -51,7 +51,7 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this._MoviesService.getMovie().subscribe((res)=>{
-      this.trendMovie=res.results.splice(0,18);
+      this.trendMovie=res.results.splice(0,12);
     });
   }
 }

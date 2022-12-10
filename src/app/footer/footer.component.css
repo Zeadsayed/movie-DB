@@ -33,3 +33,9 @@ i:hover{
     text-overflow: ellipsis;
     color: #fff;
 }
+
+@media (max-width: 770px)  {
+    .social img{
+        width: 10%;
+    }
+}

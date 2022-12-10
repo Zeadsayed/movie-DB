@@ -23,7 +23,6 @@ const routes: Routes = [
   {path:'tvDetails/:id',canActivate:[AuthGuard],component:TvDetailsComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  {path:'settings',loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
   {path:'**',component:NotfoundComponent},
 ];
 

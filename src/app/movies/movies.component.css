@@ -1,0 +1,19 @@
+.item .date span{
+    color: rgb(218, 30, 30);
+    font-weight: 700;
+    font-size: 18px;
+}
+.movie:hover{
+    color: #fff;
+   transition: all 1s;
+}
+
+ul li{
+   transition: all 1s;
+}
+
+ul li:hover{
+   /* color:  red; */
+   border-color: red !important;
+   transition: all 1s;
+}

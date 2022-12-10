@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg ">
   
-    <div class="container-fluid d-flex justify-content-between">
+    <div class="container d-flex justify-content-between">
       <a class="navbar-brand"  routerLink="home">Noxe</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -11,62 +12,59 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li *ngIf="isLogin" class="nav-item">
-            <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
+            <a class="nav-link" routerLink="home" routerLinkActive="text-white">Home</a>
           </li>
 
           <li *ngIf="isLogin" class="nav-item">
-            <a class="nav-link" routerLink="movies" routerLinkActive="active">movies</a>
+            <a class="nav-link" routerLink="movies" routerLinkActive="text-white">Movies</a>
           </li> 
 
           <li *ngIf="isLogin" class="nav-item">
-            <a class="nav-link" routerLink="tvShows" routerLinkActive="active">TvShow</a>
+            <a class="nav-link" routerLink="tvShows" routerLinkActive="text-white">TvShow</a>
           </li>
 
           <li *ngIf="isLogin" class="nav-item">
-            <a class="nav-link" routerLink="people" routerLinkActive="active">People</a>
+            <a class="nav-link" routerLink="people" routerLinkActive="text-white">People</a>
           </li>
 
           <li *ngIf="isLogin" class="nav-item">
-            <a class="nav-link" routerLink="about" routerLinkActive="active">About</a>
+            <a class="nav-link" routerLink="about" routerLinkActive="text-white">About</a>
           </li>
 
         </ul>
 
-        <ul class="navbar-nav  mb-2 mb-lg-0"> 
-          <li *ngIf="isLogin" class="nav-item">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <ul class="list-unstyled d-flex my-2"> 
+
+          <li class="nav-item mx-2 my-2">
+            <a class="nav-link "><i class="icon fa-brands fa-facebook text-white"></i></a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link"><i class="fa-brands fa-facebook text-white"></i></a>
+          <li class="nav-item mx-2 my-2">
+            <a class="nav-link "><i class="icon fa-brands fa-spotify text-white"></i></a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link"><i class="fa-brands fa-spotify text-white"></i></a>
+          <li class="nav-item mx-2 my-2">
+            <a class="nav-link "><i class="icon fa-brands fa-instagram text-white"></i></a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link"><i class="fa-brands fa-instagram text-white"></i></a>
+          <li class="nav-item mx-2 my-2">
+            <a class="nav-link "><i class="icon fa-brands fa-youtube text-white"></i></a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link"><i class="fa-brands fa-youtube text-white"></i></a>
-          </li>
-
-          <li *ngIf="isLogin" class="nav-item">
-            <a (click)="logOut()" class="nav-link" routerLink="login" routerLinkActive="active">Logout</a>
+          <li *ngIf="isLogin" class="nav-item  ">
+            <button (click)="logOut()" class="btn btn1 btn-outline-info  text-white " routerLink="login" routerLinkActive="active">Logout</button>
           </li>
 
           <!-- <li *ngIf="isLogin" class="nav-item">
             <a  class="nav-link" routerLink="settings" routerLinkActive="active">Settings</a>
           </li> -->
   
-          <li *ngIf="!isLogin" class="nav-item">
-            <a class="nav-link" routerLink="login" routerLinkActive="active">login</a>
+          <li *ngIf="!isLogin" class="nav-item ">
+            <button class="btn btn2 btn-outline-info text-white " routerLink="login" routerLinkActive="active">Login</button>
           </li>
 
-          <li *ngIf="!isLogin" class="nav-item">
-            <a class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
+          <li *ngIf="!isLogin" class="nav-item ">
+            <button  class="btn btn3 btn-outline-info  text-white " routerLink="register" routerLinkActive="active">Register</button>
           </li>
 
         </ul> 

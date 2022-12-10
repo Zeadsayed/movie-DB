@@ -2,91 +2,93 @@
 <app-header [headertrendmovies]='trendMovie'></app-header>
 
 <div class="container">
-    <div class="row">
 
-        <div class="col-md-4 ">
-            <div class="brdr w-25 my-4"></div>
-            <h2>
-                Tranding <br>
-                Movies <br>
-                To watch now
-            </h2>
-            <p>Tranding Movies To Watch Now</p>
-            <div class="brdr my-4"></div>
+    <div class="row my-2">
+
+        <div class="col-lg-12 col-md-12 d-flex justify-content-center align-items-center text-center">
+           <div>
+                <h2>
+                    Tranding <br>
+                    Movies <br>
+                    To watch now
+                </h2>
+                <p>Tranding Movies To Watch Now</p>
+               
+           </div>
         </div>
-
-        <div *ngFor="let movie of trendMovie" class="col-md-2 col-sm-4 position-relative">
-
-            <div class="movie border border-dark my-3">
-                <a [routerLink]="['/movieDetails',movie.id]" class="list-unstyled text-decoration-none text-white">
-                    <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
-                    <h3 class="h6 text-center my-1">{{movie.title}} {{movie.name}}</h3>
-                    <!-- <h2 class="">release date : {{movie.release_date }}</h2> -->
-                    <div class="vote position-absolute top-0 end-0  ">
-                        {{movie.vote_average | number:'1.1-1'}}
-                    </div>
-                </a>
+        
+        <div class="brdr my-3 "></div>
+        
+        <div [routerLink]="['/movieDetails',movie.id]" *ngFor="let movie of trendMovie" class="col-lg-3 my-2 col-md-4 col-sm-6 item position-relative">
+            
+            <img [src]="imgPrefix+movie.poster_path" class="w-100 " alt="">
+            <h3 class="h6 text-center my-3">{{movie.title}} {{movie.name}}</h3>
+            <!-- <div class="d-flex ">
+                <h3 class="date h6 text-center text-info my-2"> {{movie.release_date }}</h3>    
+            </div> -->
+        
+            <div class="vote position-absolute top-0 end-0  rounded rounded-2">
+                <i class='fas fa-star text-warning fa-xs'></i> {{movie.vote_average | number:'1.1-1'}}
             </div>
 
         </div>
 
     </div>
 
-    <div class="row">
+    <div class="row my-2">
 
-        <div class="col-md-4">
-            <div class="brdr w-25 my-4"></div>
+        <div class="col-lg-12 col-md-12 d-flex justify-content-center align-items-center text-center">
+            <div>
+                <div class="brdr w-100 my-3"></div>
             <h2>
                 Tranding <br>
                 tv <br>
                 To watch now
             </h2>
             <p>Tranding tv To Watch Now</p>
-            <div class="brdr my-4"></div>
+            </div>
         </div>
 
-        <div *ngFor="let movie of trendTv" class="col-md-2 col-sm-4 position-relative">
+        <div class="brdr my-3"></div>
 
-            <div class="movie">
-                <a [routerLink]="['/tvDetails',movie.id]" class="list-unstyled text-decoration-none text-white">
-                    <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
-                    <h3 class="h6 text-center">{{movie.title}} {{movie.name}}</h3>
+        <div [routerLink]="['/tvDetails',movie.id]" *ngFor="let movie of trendTv" class="col-lg-3 my-2 col-md-4 col-sm-6 item position-relative">
+        
+            <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
+            <h3 class="h6 text-center  my-3">{{movie.title}} {{movie.name}}</h3>
 
-                    <div class="vote position-absolute top-0 end-0">
-                        {{movie.vote_average | number:'1.1-1'}}
-                    </div>
-                </a>
+            <div class="vote position-absolute top-0 end-0 rounded rounded-2">
+                <i class='fas fa-star text-warning fa-xs'></i> {{movie.vote_average | number:'1.1-1'}}
             </div>
-
         </div>
 
     </div>
 
-    <div class="row">
+    <div class="row my-2">
 
-        <div class="col-md-4">
-            <div class="brdr w-25 my-4"></div>
+        <div class="col-lg-12 col-md-12 d-flex justify-content-center align-items-center text-center">
+            <div>
+                <div class="brdr w-100 my-3"></div>
             <h2>
                 Tranding <br>
                 people <br>
                 To watch now
             </h2>
             <p>Tranding people To Watch Now</p>
-            <div class="brdr my-4"></div>
+            </div>
         </div>
 
-        <div *ngFor="let movie of trendPeople" class="col-md-2 col-sm-4 position-relative">
+        <div class="brdr my-3"></div>
+
+        <div *ngFor="let movie of trendPeople" class="col-lg-3 my-2 col-md-4 col-sm-6 item">
 
             <div class="movie">
                 <img [src]="imgPrefix+movie.profile_path" class="w-100" alt="">
-                <h3 class="h6 text-center">{{movie.title}} {{movie.name}}</h3>
+                <h3 class="h6 text-center my-3">{{movie.title}} {{movie.name}}</h3>
 
-                <div class="vote position-absolute top-0 end-0">
-                    {{movie.popularity | number:'1.1-1'}}
-                </div>
             </div>
 
         </div>
 
     </div>
+
 </div>

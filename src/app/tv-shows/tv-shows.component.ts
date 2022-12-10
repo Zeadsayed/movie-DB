@@ -51,7 +51,7 @@ export class TvShowsComponent {
 
   ngOnInit(): void {
     this._tvsService.getTv().subscribe((res)=>{
-      this.trendtv=res.results.splice(0,18);
+      this.trendtv=res.results.splice(0,12);
     });
   }
 }

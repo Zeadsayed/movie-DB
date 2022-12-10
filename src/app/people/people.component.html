@@ -3,7 +3,7 @@
 
         <div class="col-md-12 text-center">
          
-                <div class="brdr w-25 my-4 mx-auto"></div>
+                <div class=" w-25 my-4 mx-auto"></div>
                 <h2>
                     Tranding <br>
                     people <br>
@@ -14,18 +14,14 @@
          
         </div>
 
-        <div *ngFor="let person of trendperson" class="item col-lg-3 col-md-4 col-sm-6 position-relative ">
+        <div *ngFor="let person of trendperson" class="people col-lg-3 my-2 col-md-4 col-sm-6 item position-relative">
 
-            <div class="movie border border-dark my-3 pb-5 ">
-                <a class="list-unstyled text-decoration-none text-white">
-                    <img [src]="imgPrefix+person.profile_path " class="w-100" alt="">
-                    <h3 class="h6 my-2 mx-2">{{person.title}} {{person.name}}</h3>
-                    <p class="my-2 mx-2">{{person.known_for_department}}</p>
-                    <div class="vote position-absolute top-0 end-0  rounded rounded-3">
-                        {{person.popularity | number:'1.1-1'}}
-                    </div>
-                </a>
-            </div>
+
+            <img [src]="imgPrefix+person.profile_path" class="w-100" alt="">
+
+            <h3 class="h6 my-3 ">{{person.title}} {{person.name}}</h3>
+
+            <h3 class="h6 my-3 text-danger">{{person.known_for_department}} </h3>
 
         </div>
 

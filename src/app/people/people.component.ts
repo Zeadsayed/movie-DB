@@ -13,7 +13,7 @@ export class PeopleComponent {
 
   ngOnInit(): void {
     this._MoviesService.getMovies("person").subscribe((res)=>{
-      this.trendperson=res.results.splice(0,18);
+      this.trendperson=res.results.splice(0,12);
     });
   }
 }

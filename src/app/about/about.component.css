@@ -1,0 +1,110 @@
+.header {
+    background-position: 0px 0px;
+    background-color: #0a1526;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.header.gradient {
+    width: 100%;
+    background-image: radial-gradient(at 25% top, #32112c 0%, #0a1526 40%);
+    z-index: 0;
+}
+
+div.header div.inner_content {
+    padding-top: 70px;
+    box-sizing: border-box;
+    width: 100%;
+    background-image: url(../../assets/red_pipes-594140f35efb300741add9827cc4f41053b0a4bb7ba249a40375377cc9d22d47.svg);
+    background-position: center -250px;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+div.header div.inner_content div.content {
+    color: #fff;
+    padding: 20px 0 70px 0;
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+div.header div.inner_content div.content h2 {
+    height: 233px;
+    line-height: 233px;
+    font-family: 'Shrikhand', cursive;
+    font-size: 10em;
+    font-weight: 700;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+div.header div.inner_content img {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: -140px;
+    outline-style: hidden;
+}
+
+div.header div.inner_content div.content h3 {
+    font-size: 4em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+div.header div.inner_content div.content p {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+div.header div.inner_content div.content h4 {
+    font-size: 2em;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+div.header div.inner_content div.wrapper {
+    margin: 0 auto;
+    width: 100%;
+}
+div.header div.inner_content div.wrapper div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+div.header div.inner_content div.wrapper div>div {
+    color: #d40242;
+    font-weight: 700;
+    font-size: 4em;
+    line-height: 0.8em;
+    opacity: 0.7;
+    width: 8vw;
+}
+div.header div.inner_content div.wrapper div p {
+    text-align: left;
+    margin: 0;
+    width: 92vw;
+}
+
+
+.btn{
+    color: #d40242 !important;
+    margin-top: 40px;
+    font-weight: 900;
+    font-size: 1.3em;
+    font-weight: 900;
+    transition: 0.2s all;
+
+}
+
+.btn:hover {
+    background-color: #d40242 !important;
+    color: #fff !important;
+}

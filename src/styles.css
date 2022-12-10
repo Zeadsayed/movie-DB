@@ -29,3 +29,34 @@ body{
 .nav-li{
    cursor: pointer;
 }
+
+.item { 
+  
+   display: inline-block;
+   border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   -ms-border-radius: 10px;
+   -o-border-radius: 10px;
+   cursor: pointer;
+   transition: all 1s;
+
+ }
+ .item h3{
+   font-weight: 700;
+}
+
+ .item:hover {
+   box-shadow: 1px 2px 5px rgba(235, 5, 5, 0.3);
+   color: rgba(40, 176, 214);
+   transition: all 1s;
+ }
+
+.item .vote{
+   transition: all 1s;
+}
+.item:hover .vote{
+  background-color: rgb(125, 3, 3);
+  /* color: black; */
+  transition: all 1s;
+} 
