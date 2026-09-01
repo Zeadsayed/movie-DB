@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "prepare:env": "node scripts/generate-environment.cjs",
+    "prestart": "npm run prepare:env",
     "start": "ng serve",
+    "prebuild": "npm run prepare:env",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "pretest": "npm run prepare:env",
     "test": "ng test"
   },
   "private": true,

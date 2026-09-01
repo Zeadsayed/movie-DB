@@ -18,7 +18,9 @@ Live demo: https://zeadsayed.github.io/movie-DB/
 
 TMDB requests are centralized in `TmdbService`. The `TmdbInterceptor` adds the API key from the Angular environment configuration, so credentials are not duplicated in services or request URLs.
 
-Before running the app, add your own TMDB API key to `tmdbApiKey` in `src/environments/environment.ts`. Keep real credentials out of commits and public repositories.
+Copy `.env.example` to `.env.local`, then replace the placeholder with your TMDB API key. The generated Angular environment is ignored by Git, so the key stays out of commits and public repositories.
+
+For GitHub Pages, add the key as a repository Actions secret named `TMDB_API_KEY`. The deployment workflow injects it only while building.
 
 Because Angular environment values are compiled into the browser bundle, they are not secret. Use a backend proxy if your deployment requires the TMDB credential to remain private.
 

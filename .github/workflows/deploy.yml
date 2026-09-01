@@ -25,7 +25,9 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Build
-        run: npx ng build --configuration production --base-href /movie-DB/
+        run: npm run build -- --configuration production --base-href /movie-DB/
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
