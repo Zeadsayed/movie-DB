@@ -1,0 +1,49 @@
+.person-hero {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) 1fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--surface-2), var(--surface));
+}
+.person-hero > img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.person-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+}
+.person-facts span {
+  display: flex;
+  flex-direction: column;
+}
+.person-facts strong {
+  color: var(--text);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+.biography {
+  display: -webkit-box;
+  max-width: 800px;
+  overflow: hidden;
+  color: var(--muted);
+  line-height: 1.8;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+}
+@media (max-width: 767.98px) {
+  .person-hero {
+    grid-template-columns: 1fr;
+  }
+  .person-hero > img {
+    max-width: 340px;
+    margin: auto;
+  }
+}

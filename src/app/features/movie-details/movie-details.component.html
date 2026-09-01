@@ -1,0 +1,69 @@
+<div *ngIf="movieDetails as movie" class="container detail-shell">
+  <section class="detail-panel">
+    <div class="detail-grid">
+      <img class="detail-poster" [src]="imgPrefix + movie.poster_path" [alt]="movie.title">
+      <div class="detail-content"><span class="eyebrow">Movie details</span>
+        <h1 class="detail-title">{{movie.title}}</h1>
+        <p *ngIf="movie.tagline" class="detail-tagline">“{{movie.tagline}}”</p>
+        <div class="detail-stats"><span class="detail-stat"><i
+              class="fa-solid fa-star me-1 text-warning"></i><strong>{{movie.vote_average | number:'1.1-1'}}</strong>
+            rating</span><span class="detail-stat"><strong>{{movie.vote_count}}</strong> votes</span><span
+            class="detail-stat"><strong>{{movie.release_date || 'TBA'}}</strong> released</span><span
+            *ngIf="movie.runtime" class="detail-stat"><strong>{{movie.runtime}}</strong> min</span></div>
+        <div class="genre-list"><span *ngFor="let genre of movie.genres">{{genre.name}}</span></div>
+        <div class="detail-overview">
+          <h2>Overview</h2>
+          <p>{{movie.overview || 'No overview is available for this title yet.'}}</p>
+        </div>
+        <div *ngIf="providers().length" class="providers">
+          <div>
+            <h2>Where to watch</h2><small>Streaming availability for Egypt or US fallback</small>
+          </div><a *ngFor="let provider of providers()" [href]="providerRegion?.link" target="_blank" rel="noopener"
+            [title]="provider.provider_name"><img [src]="logoPrefix + provider.logo_path"
+              [alt]="provider.provider_name"></a><span class="justwatch">Data by JustWatch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="trailers.length" class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">Watch</span>
+        <h2 class="section-title">Trailers & teasers</h2>
+      </div>
+    </div>
+    <div class="trailer-grid"><a *ngFor="let trailer of trailers" class="trailer-card" [href]="trailerUrl(trailer)"
+        target="_blank" rel="noopener"><img [src]="trailerImage(trailer)" [alt]="trailer.name"><span
+          class="trailer-play"><i class="fa-solid fa-play"></i></span><strong>{{trailer.name}}</strong></a></div>
+  </section>
+
+  <section *ngIf="cast.length" class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">On screen</span>
+        <h2 class="section-title">Top cast</h2>
+      </div>
+    </div>
+    <div class="cast-grid"><a *ngFor="let person of cast" class="cast-card" [routerLink]="['/person', person.id]"><img
+          [src]="profilePrefix + person.profile_path" [alt]="person.name"
+          loading="lazy"><strong>{{person.name}}</strong><span>{{person.character}}</span></a></div>
+  </section>
+
+  <section *ngIf="recommendations.length" class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">Keep exploring</span>
+        <h2 class="section-title">You may also like</h2>
+      </div>
+    </div>
+    <div class="media-grid">
+      <article *ngFor="let item of recommendations" class="media-card" [routerLink]="['/movieDetails', item.id]">
+        <div class="media-card__image-wrap"><img class="media-card__image" [src]="imgPrefix + item.poster_path"
+            [alt]="item.title" loading="lazy"><span class="rating-badge"><i
+              class="fa-solid fa-star"></i>{{item.vote_average | number:'1.1-1'}}</span></div>
+        <div class="media-card__body">
+          <h3 class="media-card__title">{{item.title}}</h3>
+          <p class="media-card__meta">{{item.release_date}}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

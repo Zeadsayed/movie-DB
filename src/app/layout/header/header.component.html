@@ -1,0 +1,46 @@
+<header class="hero">
+  <div *ngIf="featuredMovie?.backdrop_path" class="hero-backdrop"
+    [style.background-image]="'url(' + backdropPrefix + featuredMovie?.backdrop_path + ')' "></div>
+  <div class="hero-shade"></div>
+
+  <div class="container hero-content">
+    <div class="hero-copy">
+      <span class="eyebrow">Your next story starts here</span>
+      <h1>Find something<br><span>worth watching.</span></h1>
+      <p>Explore trending movies, standout series, and the people behind the stories everyone is talking about.</p>
+      <div class="hero-actions">
+        <a class="primary-button" routerLink="/movies"><i class="fa-solid fa-play"></i> Explore movies</a>
+        <a class="secondary-button" routerLink="/tvShows"><i class="fa-solid fa-tv"></i> Browse TV</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>20+</strong><span>Trending picks</span></div>
+        <div><strong>Daily</strong><span>Fresh discoveries</span></div>
+        <div><strong>Free</strong><span>Personal watchlist</span></div>
+      </div>
+    </div>
+
+    <section class="hero-showcase" aria-label="Trending movie slider">
+      <div class="showcase-heading">
+        <div><span class="showcase-kicker">Trending today</span>
+          <h2>Now in the spotlight</h2>
+        </div>
+        <span class="slide-count"><i class="fa-solid fa-bolt"></i> Updated daily</span>
+      </div>
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let movie of headertrendmovies">
+          <ng-template carouselSlide [id]="movie.id.toString()">
+            <a class="showcase-card" [routerLink]="['/movieDetails', movie.id]">
+              <img [src]="movie.backdrop_path ? backdropPrefix + movie.backdrop_path : imgPrefix + movie.poster_path"
+                [alt]="movie.title" loading="lazy">
+              <span class="showcase-rating"><i class="fa-solid fa-star"></i>{{movie.vote_average |
+                number:'1.1-1'}}</span>
+              <span class="showcase-overlay"><small><i class="fa-solid fa-fire"></i> Trending · {{movie.release_date |
+                  date:'yyyy'}}</small><strong>{{movie.title}}</strong><em>Explore movie <i
+                    class="fa-solid fa-arrow-right"></i></em></span>
+            </a>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </section>
+  </div>
+</header>

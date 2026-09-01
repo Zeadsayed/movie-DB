@@ -1,0 +1,47 @@
+<div class="auth-page">
+    <div class="auth-glow"></div>
+    <div class="container auth-layout">
+        <section class="auth-intro">
+            <a class="auth-brand" routerLink="/home"><span><i class="fa-solid fa-play"></i></span> NOXE</a>
+            <span class="eyebrow">Welcome back</span>
+            <h1>Your watchlist is waiting.</h1>
+            <p>Sign in to explore what is trending, save your favorites, and find the next story worth watching.</p>
+            <div class="auth-features">
+                <span><i class="fa-solid fa-check"></i> Daily trending picks</span>
+                <span><i class="fa-solid fa-check"></i> Personal watchlist</span>
+                <span><i class="fa-solid fa-check"></i> Movie and TV details</span>
+            </div>
+        </section>
+
+        <section class="auth-card">
+            <div class="auth-card__heading"><span>Secure access</span>
+                <h2>Sign in to NOXE</h2>
+                <p>Use your DummyJSON account credentials.</p>
+            </div>
+            <div *ngIf="err" class="auth-error" role="alert"><i class="fa-solid fa-circle-exclamation"></i>{{err}}</div>
+            <form [formGroup]="loginForm" (ngSubmit)="OnLogin(loginForm)">
+                <div class="field-group">
+                    <label for="username">Username</label>
+                    <div class="field-control"><i class="fa-regular fa-user"></i><input formControlName="username"
+                            autocomplete="username" type="text" id="username" placeholder="Enter your username"></div>
+                    <small
+                        *ngIf="loginForm.get('username')?.errors?.['required'] && loginForm.get('username')?.touched">Username
+                        is required.</small>
+                </div>
+                <div class="field-group">
+                    <label for="password">Password</label>
+                    <div class="field-control"><i class="fa-solid fa-lock"></i><input formControlName="password"
+                            autocomplete="current-password" type="password" id="password"
+                            placeholder="Enter your password"></div>
+                    <small
+                        *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched">Password
+                        is required.</small>
+                </div>
+                <button class="primary-button submit-button" [disabled]="loginForm.invalid" type="submit">Sign in <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </form>
+            <div class="demo-note"><i class="fa-regular fa-lightbulb"></i><span>Demo: <strong>emilys</strong> /
+                    <strong>emilyspass</strong></span></div>
+        </section>
+    </div>
+</div>

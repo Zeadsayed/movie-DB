@@ -1,0 +1,94 @@
+<main class="container page-shell watchlist-page">
+  <header class="watchlist-hero">
+    <div><span class="eyebrow">Your collection</span>
+      <h1 class="page-title">My watchlist</h1>
+      <p class="page-copy">Everything you want to watch, saved in one place.</p>
+    </div>
+    <div *ngIf="items.length" class="watchlist-summary" aria-label="Watchlist summary">
+      <div><strong>{{items.length}}</strong><span>Saved</span></div>
+      <div><strong>{{movieCount}}</strong><span>Movies</span></div>
+      <div><strong>{{tvCount}}</strong><span>TV shows</span></div>
+    </div>
+  </header>
+
+  <section *ngIf="items.length === 0" class="empty-state watchlist-empty">
+    <div class="empty-state__icon"><i class="fa-regular fa-bookmark"></i></div>
+    <h2>Your watchlist is ready for a first pick</h2>
+    <p>Save movies and shows while browsing, then come back here when it is time to watch.</p>
+    <div class="empty-actions"><a class="primary-button" routerLink="/movies"><i class="fa-solid fa-film"></i> Explore
+        movies</a><a class="secondary-button" routerLink="/tvShows"><i class="fa-solid fa-tv"></i> Browse TV shows</a>
+    </div>
+  </section>
+
+  <section *ngIf="items.length > 0" aria-label="Saved titles">
+    <div class="watchlist-toolbar">
+      <div class="filter-tabs" aria-label="Filter by media type">
+        <button type="button" [class.active]="filter === 'all'" (click)="filter = 'all'">All
+          <span>{{items.length}}</span></button><button type="button" [class.active]="filter === 'movie'"
+          (click)="filter = 'movie'">Movies <span>{{movieCount}}</span></button><button type="button"
+          [class.active]="filter === 'tv'" (click)="filter = 'tv'">TV shows <span>{{tvCount}}</span></button>
+      </div>
+      <div class="toolbar-actions">
+        <label class="watchlist-search"><i class="fa-solid fa-magnifying-glass"></i><span class="visually-hidden">Search
+            your watchlist</span><input [(ngModel)]="searchTerm" type="search"
+            placeholder="Search saved titles"></label>
+        <label class="sort-control"><span class="visually-hidden">Sort watchlist</span><i
+            class="fa-solid fa-arrow-down-wide-short"></i><select [(ngModel)]="sort" aria-label="Sort watchlist">
+            <option value="added">Recently added</option>
+            <option value="rating">Highest rated</option>
+            <option value="newest">Newest release</option>
+            <option value="title">Title A–Z</option>
+          </select></label>
+      </div>
+    </div>
+
+    <div *ngIf="visibleItems.length; else noMatches" class="watchlist-grid">
+      <article *ngFor="let item of visibleItems; trackBy: trackByItem" class="watchlist-card">
+        <a class="poster-link" [routerLink]="itemRoute(item)"
+          [attr.aria-label]="'View ' + itemTitle(item) + ' details'">
+          <img *ngIf="item.poster_path; else posterFallback" [src]="imgPrefix + item.poster_path"
+            [alt]="itemTitle(item)" loading="lazy"><ng-template #posterFallback><span class="poster-fallback"><i
+                class="fa-solid fa-clapperboard"></i></span></ng-template>
+          <span class="media-type"><i
+              [class]="itemType(item) === 'movie' ? 'fa-solid fa-film' : 'fa-solid fa-tv'"></i>{{itemType(item) ===
+            'movie' ? 'Movie' : 'TV show'}}</span>
+        </a>
+        <div class="watchlist-card__body">
+          <div class="card-copy">
+            <p class="card-meta"><span>{{itemYear(item)}}</span><span *ngIf="item.vote_average"><i
+                  class="fa-solid fa-star"></i>{{item.vote_average | number:'1.1-1'}}</span></p>
+            <h2><a [routerLink]="itemRoute(item)">{{itemTitle(item)}}</a></h2>
+            <p class="overview">{{item.overview || 'No overview is available for this title yet.'}}</p>
+          </div>
+          <div class="card-actions"><a class="details-link" [routerLink]="itemRoute(item)">View details <i
+                class="fa-solid fa-arrow-right"></i></a><button class="remove-button" (click)="remove(item)"
+              type="button" [attr.aria-label]="'Remove ' + itemTitle(item) + ' from watchlist'"
+              title="Remove from watchlist"><i class="fa-regular fa-trash-can"></i></button></div>
+        </div>
+      </article>
+    </div>
+
+    <ng-template #noMatches>
+      <div class="no-matches"><i class="fa-solid fa-magnifying-glass"></i>
+        <h2>No saved titles match</h2>
+        <p>Try another search or media filter.</p><button class="secondary-button" type="button"
+          (click)="clearFilters()">Reset filters</button>
+      </div>
+    </ng-template>
+
+    <footer class="watchlist-footer">
+      <span>Showing {{visibleItems.length}} of {{items.length}} saved {{items.length === 1 ? 'title' : 'titles'}}</span>
+      <button *ngIf="!showClearConfirmation" class="clear-button" (click)="requestClear()" type="button"><i
+          class="fa-regular fa-trash-can"></i> Clear watchlist</button>
+      <div *ngIf="showClearConfirmation" class="clear-confirm" role="group" aria-label="Confirm clear watchlist">
+        <span>Remove all titles?</span><button type="button" class="confirm-button" (click)="clear()">Clear
+          all</button><button type="button" class="cancel-button" (click)="cancelClear()">Cancel</button>
+      </div>
+    </footer>
+  </section>
+
+  <div *ngIf="undoMessage" class="undo-toast" role="status" aria-live="polite"><i
+      class="fa-solid fa-circle-check"></i><span>{{undoMessage}}</span><button type="button"
+      (click)="undo()">Undo</button><button type="button" class="toast-close" (click)="dismissUndo()"
+      aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>
+</main>

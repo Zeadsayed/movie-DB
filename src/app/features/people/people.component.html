@@ -1,0 +1,9 @@
+<div class="container page-shell">
+  <header class="page-heading"><span class="eyebrow">Behind the stories</span><h1 class="page-title">Trending people</h1><p class="page-copy">Actors, directors, and creators making their mark this week.</p></header>
+  <div class="media-grid">
+    <article *ngFor="let person of trendperson" class="media-card" [routerLink]="['/person', person.id]">
+      <div class="media-card__image-wrap"><img class="media-card__image" [src]="imgPrefix + person.profile_path" [alt]="person.name" loading="lazy"></div>
+      <div class="media-card__body"><h2 class="media-card__title">{{person.name}}</h2><p class="media-card__meta">{{person.known_for_department || 'Entertainment'}}</p></div>
+    </article>
+  </div>
+</div>

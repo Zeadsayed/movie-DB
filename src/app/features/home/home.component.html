@@ -1,0 +1,67 @@
+<app-header [headertrendmovies]="trendMovie"></app-header>
+
+<div class="container">
+  <section class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">Now trending</span>
+        <h2 class="section-title">Movies people love</h2>
+        <p class="section-copy">The most talked-about films this week.</p>
+      </div>
+      <a class="section-link" routerLink="/movies">View all <i class="fa-solid fa-arrow-right ms-1"></i></a>
+    </div>
+    <div class="media-grid">
+      <article *ngFor="let movie of trendMovie" class="media-card" [routerLink]="['/movieDetails', movie.id]">
+        <div class="media-card__image-wrap">
+          <img class="media-card__image" [src]="imgPrefix + movie.poster_path" [alt]="movie.title" loading="lazy">
+          <span class="rating-badge"><i class="fa-solid fa-star"></i>{{movie.vote_average | number:'1.1-1'}}</span>
+        </div>
+        <div class="media-card__body">
+          <h3 class="media-card__title">{{movie.title}}</h3>
+          <p class="media-card__meta">{{movie.release_date || 'Discover now'}}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">Binge-worthy</span>
+        <h2 class="section-title">TV shows on the rise</h2>
+        <p class="section-copy">Fresh series and returning favorites.</p>
+      </div>
+      <a class="section-link" routerLink="/tvShows">View all <i class="fa-solid fa-arrow-right ms-1"></i></a>
+    </div>
+    <div class="media-grid">
+      <article *ngFor="let tv of trendTv" class="media-card" [routerLink]="['/tvDetails', tv.id]">
+        <div class="media-card__image-wrap">
+          <img class="media-card__image" [src]="imgPrefix + tv.poster_path" [alt]="tv.name" loading="lazy">
+          <span class="rating-badge"><i class="fa-solid fa-star"></i>{{tv.vote_average | number:'1.1-1'}}</span>
+        </div>
+        <div class="media-card__body">
+          <h3 class="media-card__title">{{tv.name}}</h3>
+          <p class="media-card__meta">{{tv.first_air_date || 'Discover now'}}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">In the spotlight</span>
+        <h2 class="section-title">People to watch</h2>
+        <p class="section-copy">Meet the talent shaping entertainment today.</p>
+      </div>
+      <a class="section-link" routerLink="/people">View all <i class="fa-solid fa-arrow-right ms-1"></i></a>
+    </div>
+    <div class="media-grid">
+      <article *ngFor="let person of trendPeople" class="media-card">
+        <div class="media-card__image-wrap"><img class="media-card__image" [src]="imgPrefix + person.profile_path"
+            [alt]="person.name" loading="lazy"></div>
+        <div class="media-card__body">
+          <h3 class="media-card__title">{{person.name}}</h3>
+          <p class="media-card__meta">{{person.known_for_department || 'Entertainment'}}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

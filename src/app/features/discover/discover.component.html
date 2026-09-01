@@ -1,0 +1,22 @@
+<div class="container page-shell">
+  <header class="page-heading"><span class="eyebrow">Find your perfect match</span><h1 class="page-title">Discover</h1><p class="page-copy">Filter the TMDB catalog by format, genre, year, rating, and popularity.</p></header>
+
+  <form class="filter-panel" [formGroup]="filterForm" (ngSubmit)="search()">
+    <label><span>Type</span><select formControlName="type"><option value="movie">Movies</option><option value="tv">TV shows</option></select></label>
+    <label><span>Genre</span><select formControlName="genre"><option [ngValue]="null">All genres</option><option *ngFor="let genre of genres" [ngValue]="genre.id">{{genre.name}}</option></select></label>
+    <label><span>Release year</span><input formControlName="year" type="number" min="1900" max="2030" placeholder="Any year"></label>
+    <label><span>Minimum rating</span><select formControlName="minRating"><option [ngValue]="0">Any rating</option><option *ngFor="let rating of [5,6,7,8,9]" [ngValue]="rating">{{rating}}+ stars</option></select></label>
+    <label><span>Sort by</span><select formControlName="sortBy"><option value="popularity.desc">Most popular</option><option value="vote_average.desc">Highest rated</option><option [value]="filterForm.controls.type.value === 'movie' ? 'primary_release_date.desc' : 'first_air_date.desc'">Newest first</option><option value="revenue.desc" *ngIf="filterForm.controls.type.value === 'movie'">Revenue</option></select></label>
+    <button class="primary-button" type="submit"><i class="fa-solid fa-sliders"></i> Apply filters</button>
+  </form>
+
+  <div *ngIf="loading" class="results-status"><i class="fa-solid fa-circle-notch fa-spin"></i> Curating results…</div>
+  <div *ngIf="error" class="empty-state"><div class="empty-state__icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h2>Something went wrong</h2><p>{{error}}</p></div>
+  <div *ngIf="!loading && !error" class="media-grid">
+    <article *ngFor="let item of results" class="media-card" [routerLink]="detailsRoute(item)">
+      <div class="media-card__image-wrap"><img class="media-card__image" [src]="imageBaseUrl + item.poster_path" [alt]="title(item)" loading="lazy"><span class="rating-badge"><i class="fa-solid fa-star"></i>{{item.vote_average | number:'1.1-1'}}</span></div>
+      <div class="media-card__body"><h2 class="media-card__title">{{title(item)}}</h2><p class="media-card__meta">{{date(item) || 'Date unavailable'}}</p></div>
+    </article>
+  </div>
+  <div *ngIf="!loading && results.length" class="pager"><button class="secondary-button" type="button" [disabled]="currentPage === 1" (click)="search(currentPage - 1)"><i class="fa-solid fa-arrow-left"></i> Previous</button><span>Page {{currentPage}} of {{totalPages}}</span><button class="secondary-button" type="button" [disabled]="currentPage === totalPages" (click)="search(currentPage + 1)">Next <i class="fa-solid fa-arrow-right"></i></button></div>
+</div>

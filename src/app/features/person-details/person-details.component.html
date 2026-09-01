@@ -1,0 +1,31 @@
+<div *ngIf="person" class="container page-shell">
+  <section class="person-hero">
+    <img [src]="profileBaseUrl + person.profile_path" [alt]="person.name">
+    <div><span class="eyebrow">{{person.known_for_department}}</span>
+      <h1 class="page-title">{{person.name}}</h1>
+      <div class="person-facts"><span *ngIf="person.birthday"><strong>Born</strong>{{person.birthday}}</span><span
+          *ngIf="person.place_of_birth"><strong>From</strong>{{person.place_of_birth}}</span></div>
+      <p class="biography">{{person.biography || 'A biography is not available for this person yet.'}}</p>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <div><span class="eyebrow">Filmography</span>
+        <h2 class="section-title">Known for</h2>
+        <p class="section-copy">Popular movie and television credits.</p>
+      </div>
+    </div>
+    <div class="media-grid">
+      <article *ngFor="let credit of credits" class="media-card" [routerLink]="creditRoute(credit)">
+        <div class="media-card__image-wrap"><img class="media-card__image" [src]="posterBaseUrl + credit.poster_path"
+            [alt]="creditTitle(credit)" loading="lazy"><span class="rating-badge"><i
+              class="fa-solid fa-star"></i>{{credit.vote_average | number:'1.1-1'}}</span></div>
+        <div class="media-card__body">
+          <h3 class="media-card__title">{{creditTitle(credit)}}</h3>
+          <p class="media-card__meta">{{credit.character || credit.job || credit.media_type}}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

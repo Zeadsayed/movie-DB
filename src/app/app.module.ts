@@ -3,23 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { MoviesComponent } from './movies/movies.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { TvShowsComponent } from './tv-shows/tv-shows.component';
-import { PeopleComponent } from './people/people.component';
-import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { HomeComponent } from './features/home/home.component';
+import { AboutComponent } from './features/about/about.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { LoginComponent } from './features/login/login.component';
+import { MoviesComponent } from './features/movies/movies.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { NotfoundComponent } from './features/not-found/notfound.component';
+import { TvShowsComponent } from './features/tv-shows/tv-shows.component';
+import { PeopleComponent } from './features/people/people.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MovieDetailsComponent } from './features/movie-details/movie-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { HeaderComponent } from './header/header.component';
-import { TvDetailsComponent } from './tv-details/tv-details.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { TvDetailsComponent } from './features/tv-details/tv-details.component';
+import { WatchlistComponent } from './features/watchlist/watchlist.component';
+import { DiscoverComponent } from './features/discover/discover.component';
+import { PersonDetailsComponent } from './features/person-details/person-details.component';
+import { TmdbInterceptor } from './core/interceptors/tmdb.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,6 @@ import { TvDetailsComponent } from './tv-details/tv-details.component';
     AboutComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent,
     MoviesComponent,
     NavbarComponent,
     NotfoundComponent,
@@ -36,8 +38,10 @@ import { TvDetailsComponent } from './tv-details/tv-details.component';
     PeopleComponent,
     MovieDetailsComponent,
     HeaderComponent,
-    TvDetailsComponent
-
+    WatchlistComponent,
+    TvDetailsComponent,
+    DiscoverComponent,
+    PersonDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,10 +49,12 @@ import { TvDetailsComponent } from './tv-details/tv-details.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule, 
-    CarouselModule ,
+    BrowserAnimationsModule,
+    CarouselModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TmdbInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

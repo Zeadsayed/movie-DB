@@ -1,0 +1,34 @@
+<div class="container page-shell">
+  <header class="page-heading"><span class="eyebrow">Series worth starting</span>
+    <h1 class="page-title">Trending TV shows</h1>
+    <p class="page-copy">Explore the series viewers cannot stop watching right now.</p>
+  </header>
+  <div *ngIf="error" class="empty-state">
+    <div class="empty-state__icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+    <h2>TV shows could not be loaded</h2>
+    <p>{{error}}</p>
+  </div>
+  <div *ngIf="!error" class="media-grid">
+    <article *ngFor="let tv of trendtv" class="media-card">
+      <a class="media-card__link" [routerLink]="['/tvDetails', tv.id]">
+        <div class="media-card__image-wrap"><img class="media-card__image" [src]="imgPrefix + tv.poster_path"
+            [alt]="tv.name" loading="lazy"><span class="rating-badge"><i class="fa-solid fa-star"></i>
+            {{ tv.vote_average.toFixed(1) }}</span>
+          <button class="watchlist-button" [class.is-added]="savedShowIds.has(tv.id)" [disabled]="savedShowIds.has(tv.id)" (click)="addToWatchlist(tv, $event)" type="button" [attr.aria-label]="savedShowIds.has(tv.id) ? 'Already in watchlist' : 'Add to watchlist'">
+            <i [class]="savedShowIds.has(tv.id) ? 'fa-solid fa-check' : 'fa-regular fa-bookmark'"></i>
+          </button>
+        </div>
+        <div class="media-card__body">
+          <h2 class="media-card__title">{{tv.name}}</h2>
+          <p class="media-card__meta">{{tv.first_air_date || 'Air date unavailable'}}</p>
+        </div>
+      </a>
+    </article>
+  </div>
+  <nav aria-label="TV show pages">
+    <ul class="pagination-list">
+      <li *ngFor="let page of [1,2,3,4,5]"><button class="pagination-button" (click)="getTvsPage(page)"
+          type="button">{{page}}</button></li>
+    </ul>
+  </nav>
+</div>

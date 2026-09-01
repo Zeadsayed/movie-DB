@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg sticky-top" aria-label="Main navigation">
+  <div class="container nav-container">
+    <a class="navbar-brand" routerLink="/home" aria-label="Noxe home"><span class="brand-mark"><i
+          class="fa-solid fa-play"></i></span>NOXE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
+      aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation"><i
+        class="fa-solid fa-bars"></i></button>
+
+    <div class="collapse navbar-collapse" id="mainNavigation">
+      <ul *ngIf="isLogin" class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/movies" routerLinkActive="active">Movies</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/tvShows" routerLinkActive="active">TV shows</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/people" routerLinkActive="active">People</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/discover" routerLinkActive="active">Discover</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/about" routerLinkActive="active">About</a></li>
+      </ul>
+
+      <div *ngIf="isLogin" class="global-search">
+        <label for="globalSearch" class="visually-hidden">Search movies, TV shows, and people</label>
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input id="globalSearch" class="search-input" type="search" [formControl]="searchControl"
+          (focus)="searchOpen = searchControl.value.length >= 2" placeholder="Search titles and people"
+          autocomplete="off">
+        <span *ngIf="!searchControl.value" class="search-hint" aria-hidden="true">Search</span>
+        <button *ngIf="searchControl.value" class="search-clear" type="button" (click)="closeSearch()"
+          aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+
+        <div *ngIf="searchOpen" class="search-results">
+          <div class="search-results__header"><span>Top matches</span><small>Movies · TV · People</small></div>
+          <div *ngIf="searching" class="search-message"><i class="fa-solid fa-circle-notch fa-spin"></i> Searching...
+          </div>
+          <a *ngFor="let result of searchResults" [routerLink]="resultRoute(result)" (click)="closeSearch()"
+            class="search-result">
+            <img [src]="imageBaseUrl + resultImage(result)" [alt]="resultTitle(result)">
+            <span><strong>{{resultTitle(result)}}</strong><small><i
+                  [class]="resultType(result) === 'Movie' ? 'fa-solid fa-film' : resultType(result) === 'TV show' ? 'fa-solid fa-tv' : 'fa-regular fa-user'"></i>{{resultType(result)}}</small></span>
+            <i class="result-arrow fa-solid fa-chevron-right"></i>
+          </a>
+          <div *ngIf="!searching && !searchResults.length" class="search-message">No matching titles or people.</div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a *ngIf="isLogin" class="watchlist-link" routerLink="/watchlist" routerLinkActive="active"><i
+            class="fa-regular fa-bookmark"></i><span>Watchlist</span><span class="count-badge">{{watchlistCount}}</span></a>
+        <span *ngIf="isLogin && displayName" class="user-chip"><span class="user-avatar">{{(displayName ||
+            '').charAt(0).toUpperCase()}}</span><span class="user-name">{{displayName}}</span></span>
+        <button *ngIf="isLogin" (click)="logOut()" class="logout-button" type="button" aria-label="Log out"><i
+            class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <a *ngIf="!isLogin" class="primary-button login-link" routerLink="/login">Sign in</a>
+      </div>
+    </div>
+  </div>
+</nav>
