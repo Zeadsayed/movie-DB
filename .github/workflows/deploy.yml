@@ -25,9 +25,10 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Build
-        run: npm run build -- --configuration production --base-href /movie-DB/
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: npx ng build --configuration production --base-href /movie-DB/
+
+      - name: Add 404.html for SPA client-side routing
+        run: cp dist/app3/index.html dist/app3/404.html
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
